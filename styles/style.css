@@ -86,3 +86,27 @@ body {
 .gd-editor--canvas-background .gd-column-1:not(:first-child) {
     border-left: #fff solid 1px;
 }
+.gd-canvas--row {
+    position:relative;
+    min-height:150px;
+    width:100%;
+    padding:0 2.5rem;
+}
+.gd-canvas--row--content {
+    position:static;
+    min-height:150px;
+    left: 2.5rem;
+    right: 2.5rem;
+    border: 2px dashed rgb(139, 145, 165);
+}
+.gd-canvas--row:not(:first-child) .gd-canvas--row--content {
+    border-top:none;
+}
+.gd-column--box {
+    position:relative;
+    background-color:rgba(155, 155, 155, 0.5);
+    min-height:150px;
+}
+.gd-column--box:not(:last-child) {
+    border-right: #fff solid 1px;
+}
