@@ -1,0 +1,116 @@
+html {
+    height:100%;
+}
+body {
+    position:relative;
+    min-height:100%;
+    padding: 0;
+    margin: 0;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.gd-icon-btn {
+    color: #555;
+    font-size:1.3em;
+    text-decoration:none;
+}
+.gd-icon-btn:active {
+    color: #666;
+}
+.gd-icon-btn:hover {
+    color: #666;
+}
+#gd-editor {
+    position:absolute;
+    height:100%;
+    width:100%;
+}
+#gd-tools {
+    position:absolute;
+    left:0;
+    width:40px;
+    height:100%;
+}
+#gd-properties {
+    position:absolute;
+    right:0;
+    width:200px;
+    height:100%;
+}
+#gd-canvas {
+    position:absolute;
+    left:40px;
+    right:200px;
+    height:100%;
+}
+.gd-canvas--scroll-wrapper {
+    position:absolute;
+    overflow:scroll;
+    width:100%;
+    top:40px;
+    bottom:0;
+}
+.gd-canvas--grid {
+    position:absolute;
+    width:100%;
+    height:100%;
+    padding: 0 2.5rem;
+}
+.gd-canvas--grid > div {
+    background-color:#dbdbdb;
+}
+.gd-canvas--grid > div:not(:first-child) {
+    border-left: #fff solid 1px;
+}
+.gd-canvas--row {
+    position:relative;
+    min-height:150px;
+    width:100%;
+    padding:0 2.5rem;
+}
+.gd-canvas--toolbar {
+    position:absolute;
+    width:100%;
+    height:40px;
+}
+.gd-canvas--row--content {
+    position:static;
+    min-height:150px;
+    left: 2.5rem;
+    right: 2.5rem;
+    border: 1px dashed blue;
+}
+.gd-canvas--row--tools {
+    position:absolute;
+    height:100%;
+    width:2.5rem;
+    right:0;
+    background-color:#E2E2E2;
+    text-align:center;
+    padding-top:0.5rem;
+}
+.gd-canvas--row--tools a {
+    display:block;
+}
+.gd-column--box {
+    position:relative;
+    background-color:rgba(155, 155, 155, 0.5);
+    min-height:150px;
+}
+.gd-column--box:not(:last-child) {
+    border-right: #fff solid 1px;
+}
+
+.gd-column--resize-buttons {
+    position:absolute;
+    top:0;
+    left:0;
+    width:1.5rem;
+}
+
+.gd-column--resize-buttons a {
+    display:block;
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Grid Designer</title>
+        
+        <link rel="stylesheet" href="css/gd-grid.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        
+        <script src="js/libs/jquery-2.0.3.min.js"></script>
+    </head>
+    
+    <body>
+        <div id="gd-editor">
+            <div id="gd-tools">
+                
+            </div>
+            
+            <div id="gd-canvas">
+                <div class="gd-canvas--toolbar">
+                    <input type="radio" name="grid-size" id="grid-size-s" value="s" checked>
+                    <label for="grid-size-s">S</label>
+                    <input type="radio" name="grid-size" id="grid-size-m" value="m">
+                    <label for="grid-size-m">M</label>
+                    <input type="radio" name="grid-size" id="grid-size-l" value="l">
+                    <label for="grid-size-s">L</label>
+                    <input type="radio" name="grid-size" id="grid-size-xl" value="xl">
+                    <label for="grid-size-s">XL</label>
+                    <input type="button" id="btn-add-row" value="Add row">
+                </div>
+                <div class="gd-canvas--scroll-wrapper">                
+                    <div class="gd-canvas--grid gd-row">                
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                        <div class="gd-column-1"></div>
+                    </div>
+                    <div id="gd-canvas--rows">
+                        <div class="gd-canvas--row">
+                            <div class="gd-canvas--row--tools">
+<!--
+                                <a href="javascript:void(0)" class="gd-icon-btn" title="Move row up">
+                                    <span class="icon-arrow-up2"></span>
+                                </a>
+                                <a href="javascript:void(0)" class="gd-icon-btn" title="Move row down">
+                                    <span class="icon-arrow-down2"></span>
+                                </a>
+-->
+                                <a href="javascript:void(0)" class="gd-icon-btn btn-add-column" title="Add column">
+                                    <span class="icon-plus"></span>
+                                </a>
+<!--
+                                <a href="javascript:void(0)" class="gd-icon-btn" title="Delete row">
+                                    <span class="icon-trash"></span>
+                                </a>
+-->
+                            </div>
+                            <div class="gd-canvas--row--content gd-row">
+                                <div class="gd-column-1 gd-column--box">
+                                    <div class="gd-column--resize-buttons">                                        
+                                        <a href="javascript:void(0)" class="gd-icon-btn btn-extend-column" title="Extend column">
+                                            <span class="icon-arrow-right2"></span>
+                                        </a>                                    
+                                        <a href="javascript:void(0)" class="gd-icon-btn btn-collapse-column" title="Collapse column">
+                                            <span class="icon-arrow-left2"></span>
+                                        </a>                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="gd-properties">
+                
+            </div>        
+        </div>
+        <script src="js/app.js"></script>
+    </body>
+
+</html>
