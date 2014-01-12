@@ -1,14 +1,21 @@
-<div class="gd-canvas--row" ng-mouseenter="mouseEnter()" ng-mouseleave="mouseLeave()">
+<div class="gd-canvas--row">
+    <div class="gd-canvas--row--tools">
+        <!-- <a href="javascript:void(0)" class="gd-icon-btn" title="Move row up">
+                                    <span class="icon-arrow-up2"></span>
+                                </a>
+                                <a href="javascript:void(0)" class="gd-icon-btn" title="Move row down">
+                                    <span class="icon-arrow-down2"></span>
+                                </a>
+-->
+        <a href="javascript:void(0)" class="gd-icon-btn" ng-click="addColumn()" title="Add column">
+            <span class="icon-plus"></span>
+        </a>
+        <!-- <a href="javascript:void(0)" class="gd-icon-btn" title="Delete row">
+                                    <span class="icon-trash"></span>
+                                </a>
+-->
+    </div>
     <div class="gd-canvas--row--content gd-row">
-        <div class="gd-column-1 gd-column--box">
-            <div class="gd-column--resize-buttons">
-                <a href="javascript:void(0)" class="gd-icon-btn btn-extend-column" title="Extend column">
-                    <span class="icon-arrow-right2"></span>
-                </a>
-                <a href="javascript:void(0)" class="gd-icon-btn btn-collapse-column" title="Collapse column">
-                    <span class="icon-arrow-left2"></span>
-                </a>
-            </div>
-        </div>
+        <column ng-repeat="column in row.columns"></column>
     </div>
 </div>

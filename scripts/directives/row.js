@@ -8,15 +8,12 @@ angular.module('griddy.directives').directive('row', function () {
         templateUrl: 'partials/row.tpl.html',
         replace: true,
         link: function ($scope, element, attrs) {
-            console.log('new row');
-            
-            $scope.mouseEnter = function() {
-                console.log('mouse enter');
+            if ($scope.row.columns === undefined) {
+                $scope.row.columns = [];
+            }
+            $scope.addColumn = function () {            
+                $scope.row.columns.push({});
             };
-            $scope.mouseLeave = function() {
-                console.log('mouse leave');
-            };
-            
         }
     };
 

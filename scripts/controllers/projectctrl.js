@@ -6,6 +6,5 @@ angular.module('griddy.controllers').controller('ProjectCtrl', ['$scope', functi
         $scope.project = {
             rows:[]
         };
-
-        console.log('xxx');
+    
     }]);
