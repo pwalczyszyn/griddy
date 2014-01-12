@@ -72,8 +72,9 @@ body {
 .gd-editor--canvas-wrapper {
     position: relative;
     flex: 1 0 auto;
-    /*    background-color: #262626;*/
     background:url(../images/bg-pattern.png) repeat;
+    overflow:scroll;
+    height:0;
 }
 .gd-editor--canvas-background {
     position:absolute;
@@ -134,19 +135,16 @@ body {
 .gd-column--box:not(:last-child) {
     border-right: #fff solid 1px;
 }
-
 .gd-column--resize-buttons {
     position:absolute;
-    overflow:hidden;   
+    overflow:hidden;
     top:0;
     left:0;
     width:0;
 }
-
 .gd-column--box:hover .gd-column--resize-buttons {
     width:1.5rem;
 }
-
 .gd-column--resize-buttons a {
     display:block;
 }
