@@ -47,3 +47,9 @@
 .icon-trash:before {
 	content: "\e600";
 }
+.icon-first:before {
+	content: "\e601";
+}
+.icon-last:before {
+	content: "\e602";
+}
