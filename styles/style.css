@@ -19,6 +19,7 @@ body {
     color: #555;
     font-size:1.3em;
     text-decoration:none;
+/*    line-height:0em;*/
 }
 .gd-icon-btn:active {
     color: #666;
