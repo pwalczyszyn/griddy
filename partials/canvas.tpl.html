@@ -1,21 +1,23 @@
 <div class="gd-editor--canvas-wrapper">
-    <div class="gd-editor--canvas-background">
-        <div class="gd-row">            
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
-            <div class="gd-column-1"></div>
+    <div class="gd-editor--canvas-scrollbox">
+        <div class="gd-canvas--rows">
+            <div class="gd-editor--canvas-background">
+                <div class="gd-row">
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                    <div class="gd-column-1"></div>
+                </div>
+            </div>
+            <row ng-repeat="row in project.rows"></row>
         </div>
-    </div>
-    <div id="gd-canvas--rows">
-        <row ng-repeat="row in project.rows"></row>
     </div>
 </div>
