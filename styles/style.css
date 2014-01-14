@@ -9,6 +9,7 @@ body {
     position: relative;
     font-size:1em;
     -webkit-font-smoothing: antialiased;
+	background:#b4d455;
 }
 *, *:before, *:after {
     -moz-box-sizing: border-box;
