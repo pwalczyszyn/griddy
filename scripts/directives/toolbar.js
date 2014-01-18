@@ -10,7 +10,9 @@ angular.module('griddy.directives').directive('toolbar', function () {
         link: function ($scope, element, attrs) {
 
             $scope.addRow_clickHandler = function () {
-                var newRow = {};
+                var newRow = {
+                    columns: []
+                };
                 $scope.project.rows.push(newRow);
                 $scope.$broadcast('newrow', newRow);
             };

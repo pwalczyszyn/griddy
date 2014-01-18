@@ -9,6 +9,10 @@ angular.module('griddy.directives').directive('gridCanvas', function () {
         replace: true,
         link: function ($scope, element, attrs) {
         
+            $scope.$watch('project.breakpoint', function(newBreakpoint) {
+                console.log('break changed', newBreakpoint); 
+            });
+            
             $scope.$on('newrow', function(event, newRow) {
                 
                 
