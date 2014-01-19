@@ -12,23 +12,19 @@ angular.module('griddy.directives').directive('column', function () {
             var prefs = $scope.project.preferences,
                 col = $scope.column;
 
-            function findClass(regex, callback) {
-                var classList = element[0].classList,
-                    columnClass,
-                    columnNum;
+            $scope.$watch('project.preferences.currentBreakpoint', function (newbp, oldbp) {
+                if (newbp !== oldbp) {
+                    var oldSpan = col.getPropertyAt('span', oldbp),
+                        oldOffset = col.getPropertyAt('offset', oldbp),
+                        newSpan = col.getPropertyAt('span', newbp),
+                        newOffset = col.getPropertyAt('offset', newbp);
 
-                for (var i = 0, len = classList.length, c; i < len; i++) {
-                    c = classList[i];
-
-                    if (regex.test(c)) {
-                        columnClass = c;
-                        columnNum = Number(columnClass.substr(columnClass.lastIndexOf('-') + 1));
-                        break;
+                    element.removeClass('gd-column-' + oldSpan).removeClass('gd-offset-' + oldOffset).addClass('gd-column-' + newSpan);
+                    if (newOffset !== undefined) {
+                        element.addClass('gd-offset-' + newOffset);
                     }
                 }
-
-                callback(columnClass, columnNum);
-            }
+            });
 
             $scope.expandColumn = function () {
                 var span = col.getPropertyAt('span', prefs.currentBreakpoint) || 1,
@@ -69,14 +65,10 @@ angular.module('griddy.directives').directive('column', function () {
                 var offset = col.getPropertyAt('offset', prefs.currentBreakpoint) || 0;
 
                 if (offset > 0) {
-                    element.removeClass('gd-offset-' + offset);
-
-                    if (offset - 1 > 0) {
-                        element.addClass('gd-offset-' + (offset - 1));
-                    }
+                    element.removeClass('gd-offset-' + offset).addClass('gd-offset-' + (offset - 1));
 
                     var bp = col.breakpoints[prefs.currentBreakpoint] || (col.breakpoints[prefs.currentBreakpoint] = {});
-                    bp.offset = offset - 1 > 0 ? offset - 1 : undefined;
+                    bp.offset = offset - 1;
                 }
             };
 

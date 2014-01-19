@@ -14,7 +14,6 @@ angular.module('griddy.directives').directive('toolbar', function () {
                     columns: []
                 };
                 $scope.project.rows.push(newRow);
-                $scope.$broadcast('newrow', newRow);
             };
 
         }

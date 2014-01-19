@@ -11,7 +11,7 @@ angular.module('griddy.directives').directive('row', ['Column', function (Column
                 $scope.addColumn = function () {
                     var pbps = $scope.project.preferences.breakpoints,
                         cbp = $scope.project.preferences.currentBreakpoint,
-                        minbp = pbps[0],
+                        rootbp = $scope.project.preferences.breakpointsDirection === 'up' ? pbps[0] : pbps[pbps.length - 1],
                         bps = {},
                         column = new Column({
                             breakpoints: bps
@@ -19,15 +19,13 @@ angular.module('griddy.directives').directive('row', ['Column', function (Column
 
                     // Adding BP with a span of 1
                     bps[cbp] = {
-                        span: 1,
-                        offset: 0
+                        span: 1
                     };
 
                     // If current BP is not the lowest one adding it also with a span of 1
-                    if (cbp !== minbp.id) {
-                        bps[minbp.id] = {
-                            span: 1,
-                            offset: 0
+                    if (cbp !== rootbp.id) {
+                        bps[rootbp.id] = {
+                            span: 1
                         };
                     }
 

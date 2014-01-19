@@ -1,0 +1,58 @@
+@font-face {
+	font-family: 'griddyicons';
+	src:url('fonts/griddyicons.eot');
+	src:url('fonts/griddyicons.eot?#iefix') format('embedded-opentype'),
+		url('fonts/griddyicons.woff') format('woff'),
+		url('fonts/griddyicons.ttf') format('truetype'),
+		url('fonts/griddyicons.svg#griddyicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'griddyicons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-left2:before {
+	content: "\e604";
+}
+.icon-arrow-down2:before {
+	content: "\e605";
+}
+.icon-arrow-up2:before {
+	content: "\e606";
+}
+.icon-arrow-right2:before {
+	content: "\e607";
+}
+.icon-cross:before {
+	content: "\e609";
+}
+.icon-plus:before {
+	content: "\e60a";
+}
+.icon-minus:before {
+	content: "\e60b";
+}
+.icon-trash:before {
+	content: "\e600";
+}
+.icon-code:before {
+	content: "\e603";
+}
+.icon-first:before {
+	content: "\e601";
+}
+.icon-last:before {
+	content: "\e602";
+}
