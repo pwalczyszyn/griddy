@@ -1,87 +1,86 @@
 /* jshint browser:true */
 /* global angular */
 
-angular.module('griddy.directives').directive('column', ['bpHelpers', function (bpHelpers) {
+angular.module('griddy.directives').directive('column', function () {
 
-        return {
-            restrict: 'E',
-            templateUrl: 'partials/column.tpl.html',
-            replace: true,
-            link: function ($scope, element, attrs) {
+    return {
+        restrict: 'E',
+        templateUrl: 'partials/column.tpl.html',
+        replace: true,
+        link: function ($scope, element, attrs) {
 
-                var prefs = $scope.project.preferences,
-                    col = $scope.column;
+            var prefs = $scope.project.preferences,
+                col = $scope.column;
 
-                function findClass(regex, callback) {
-                    var classList = element[0].classList,
-                        columnClass,
-                        columnNum;
+            function findClass(regex, callback) {
+                var classList = element[0].classList,
+                    columnClass,
+                    columnNum;
 
-                    for (var i = 0, len = classList.length, c; i < len; i++) {
-                        c = classList[i];
+                for (var i = 0, len = classList.length, c; i < len; i++) {
+                    c = classList[i];
 
-                        if (regex.test(c)) {
-                            columnClass = c;
-                            columnNum = Number(columnClass.substr(columnClass.lastIndexOf('-') + 1));
-                            break;
-                        }
+                    if (regex.test(c)) {
+                        columnClass = c;
+                        columnNum = Number(columnClass.substr(columnClass.lastIndexOf('-') + 1));
+                        break;
                     }
-
-                    callback(columnClass, columnNum);
                 }
 
-                bpHelpers.getClosestDown({});
-
-                console.log('column.directive');
-
-                $scope.expandColumn = function () {
-                    var bp = col.breakpoints[prefs.currentBreakpoint] || (col.breakpoints[prefs.currentBreakpoint] = {
-                        span: 1,
-                        offset: 0
-                    });
-
-                    // Checking if can expand column
-                    if (bp.span + bp.offset + 1 <= prefs.columnsCount) {
-                        element.removeClass('gd-column-' + bp.span).addClass('gd-column-' + (bp.span + 1));
-                        bp.span++;
-                    }
-                };
-
-                $scope.collapseColumn = function () {
-                    findClass(/gd-column-[1-9][0-2]?/, function (columnClass, columnNum) {
-                        columnNum--;
-                        if (columnNum >= 1) {
-                            element.removeClass(columnClass).addClass('gd-column-' + columnNum);
-                        }
-                    });
-                };
-
-                $scope.addOffset = function () {
-                    findClass(/gd-offset-[1-9][0-1]?/, function (columnClass, columnNum) {
-                        if (columnClass === undefined) {
-                            element.addClass('gd-offset-1');
-                        } else {
-                            columnNum++;
-                            if (columnNum <= 11) {
-                                element.removeClass(columnClass).addClass('gd-offset-' + columnNum);
-                            }
-                        }
-                    });
-                };
-
-                $scope.removeOffset = function () {
-                    findClass(/gd-offset-[1-9][0-1]?/, function (columnClass, columnNum) {
-                        if (columnClass !== undefined) {
-                            columnNum--;
-                            element.removeClass(columnClass);
-                            if (columnNum > 0) {
-                                element.addClass('gd-offset-' + columnNum);
-                            }
-                        }
-                    });
-                };
-
+                callback(columnClass, columnNum);
             }
-        };
 
-    }]);
+            $scope.expandColumn = function () {
+                var span = col.getPropertyAt('span', prefs.currentBreakpoint) || 1,
+                    offset = col.getPropertyAt('offset', prefs.currentBreakpoint) || 0;
+
+                if (span + offset + 1 <= prefs.columnsCount) {
+                    element.removeClass('gd-column-' + span).addClass('gd-column-' + (span + 1));
+
+                    var bp = col.breakpoints[prefs.currentBreakpoint] || (col.breakpoints[prefs.currentBreakpoint] = {});
+                    bp.span = span + 1;
+                }
+            };
+
+            $scope.collapseColumn = function () {
+                var span = col.getPropertyAt('span', prefs.currentBreakpoint) || 1;
+
+                if (span > 1) {
+                    element.removeClass('gd-column-' + span).addClass('gd-column-' + (span - 1));
+
+                    var bp = col.breakpoints[prefs.currentBreakpoint] || (col.breakpoints[prefs.currentBreakpoint] = {});
+                    bp.span = span - 1;
+                }
+            };
+
+            $scope.addOffset = function () {
+                var span = col.getPropertyAt('span', prefs.currentBreakpoint) || 1,
+                    offset = col.getPropertyAt('offset', prefs.currentBreakpoint) || 0;
+
+                if (span + offset + 1 <= prefs.columnsCount) {
+                    element.removeClass('gd-offset-' + offset).addClass('gd-offset-' + (offset + 1));
+
+                    var bp = col.breakpoints[prefs.currentBreakpoint] || (col.breakpoints[prefs.currentBreakpoint] = {});
+                    bp.offset = offset + 1;
+                }
+            };
+
+            $scope.removeOffset = function () {
+                var offset = col.getPropertyAt('offset', prefs.currentBreakpoint) || 0;
+
+                if (offset > 0) {
+                    element.removeClass('gd-offset-' + offset);
+
+                    if (offset - 1 > 0) {
+                        element.addClass('gd-offset-' + (offset - 1));
+                    }
+
+                    var bp = col.breakpoints[prefs.currentBreakpoint] || (col.breakpoints[prefs.currentBreakpoint] = {});
+                    bp.offset = offset - 1 > 0 ? offset - 1 : undefined;
+                }
+            };
+
+        }
+    };
+
+});
