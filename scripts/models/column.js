@@ -11,30 +11,6 @@ angular.module('griddy.models').factory('Column', ['$rootScope', function ($root
             this.breakpoints = data.breakpoints || {};
         }
 
-        Column.prototype.getBreakpointFor = function (bpId) {
-            var bp = this.breakpoints[bpId];
-            if (bp) {
-                return bp;
-            }
-
-            var prevbp,
-                prefbps = prefs.breakpointsDirection === 'up' ? prefs.breakpoints : prefs.breakpoints.concat().reverse();
-
-            for (var i = 0, len = prefbps.length, prefbp; i < len; i++) {
-                prefbp = prefbps[i];
-
-                if (prefbp.id === bpId) {
-                    break;
-                }
-
-                if (this.breakpoints[prefbp.id]) {
-                    prevbp = this.breakpoints[prefbp.id];
-                }
-            }
-
-            return prevbp;
-        };
-
         Column.prototype.getPropertyAt = function (propId, bpId) {
             if (this.breakpoints[bpId] && this.breakpoints[bpId][propId] !== undefined) {
                 return this.breakpoints[bpId][propId];
